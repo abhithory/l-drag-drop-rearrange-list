@@ -3,10 +3,7 @@ import { motion, AnimatePresence, Reorder } from 'framer-motion';
 
 
 export default function DragDrapList() {
-    const initialItems = [" 1.Tomato", "2.Cucumber", "3.Cheese", " 4.Lettuce"];
-
-
-    const dragOverItem = useRef(null);
+    const initialItems = [{ value: " 1.Tomato", id:"1" }, { value: "2.Cucumber",id:"2" }, { value: "3.Cheese",id:"3" }, { value: " 4.Lettuce",id:"4" }];
 
     const [items, setItems] = useState(initialItems);
 
@@ -24,7 +21,7 @@ export default function DragDrapList() {
         }, 0);
     }
 
-    const onDragEnter = (e,i) => {
+    const onDragEnter = (e, i) => {
         if (dragItemIndex === null) return;
         console.log('====================================');
         console.log("onDragStart", dragItemIndex);
@@ -44,7 +41,7 @@ export default function DragDrapList() {
             <Reorder.Group drag="y" values={[]} onReorder={() => { }} as="div" className="box-container">
                 {items.map((item, i) => (
                     <Reorder.Item
-                        key={item}
+                        key={item.id}
                         as='span'
                     >
                         <div
@@ -53,8 +50,9 @@ export default function DragDrapList() {
                             onDragStart={(e) => onDragStart(e, i)}
                             onDragEnter={(e) => onDragEnter(e, i)}
                             onDragEnd={onDragEnd}
+                            onDragOver={(e) => e.preventDefault()}
                         >
-                            {item}
+                            {item.value}
                         </div>
                     </Reorder.Item>
                 ))}

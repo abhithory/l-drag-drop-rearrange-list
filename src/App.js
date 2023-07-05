@@ -6,6 +6,7 @@ import {useState} from 'react'
 import FramerPreset from './component/FramerPreset';
 import NewTry from './component/NewTry';
 import NormalList from './component/NormalList';
+import DragDrapList from './component/DragDropList';
 
 function App() {
 
@@ -19,7 +20,9 @@ function App() {
   return (
     <div className="App">
       {/* <FramerPreset /> */}
-      <NewTry />
+      {/* <NewTry /> */}
+
+      <DragDrapList />
 
       {/* <NormalList />   */}
    </div>
